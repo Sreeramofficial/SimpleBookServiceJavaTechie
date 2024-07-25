@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "01ce79d5-c40d-4cec-84a0-2424fcebb7fd",
+		"name": "SpringTestCollections",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37238414"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/getProductById/9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"sreeram\",\r\n    \"phone\":\"9072900\",\r\n    \"bill\":200\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/getProductById/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getProductById",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/addProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Test\",\r\n    \"stockAvailable\":0,\r\n     \"productSeller\":{\r\n        \"name\":\"Test\"\r\n\r\n    },\r\n    \"price\":450\r\n   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/addProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"addProduct"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
