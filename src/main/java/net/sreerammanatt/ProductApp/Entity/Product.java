@@ -4,6 +4,7 @@ package net.sreerammanatt.ProductApp.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
@@ -34,4 +35,13 @@ public class Product {
 
     @Column(name = "currentPrice")
     private int price;
+
+
+    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = false,optional = false)
+    @JoinColumn(name = "seller_code")
+
+    private ProductSeller productSeller;
+
+
+
 }
