@@ -42,6 +42,15 @@ public class Product {
 
     private ProductSeller productSeller;
 
+//this is for many-many mapping
+//    @JoinTable(name = "product_customer",
+//            joinColumns = {@JoinColumn(name = "product_id")},
+//            inverseJoinColumns = {@JoinColumn( name = "customer_id")})
+    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = false,optional = false)
+    @JoinColumn(name = "customer_code")
+    private  Customers customers;
+
+
 
 
 }
