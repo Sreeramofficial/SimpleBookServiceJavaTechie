@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "user_table")
@@ -28,6 +29,10 @@ public class User  {
 
     @OneToOne(cascade = CascadeType.ALL,
     fetch = FetchType.EAGER)
-    @JoinColumn(name = "address",nullable = false)
+    @JoinColumn(name = "address_id",nullable = false,referencedColumnName ="address_id" )
     private  Address address;
+
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = false,fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id",referencedColumnName = "user_id")
+    private List<Education> education;
 }
