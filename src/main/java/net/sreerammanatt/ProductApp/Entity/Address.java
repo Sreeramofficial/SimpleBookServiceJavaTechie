@@ -30,5 +30,8 @@ public class Address {
     private @Column(name = "STATE")
     String state;
 
+    @OneToOne(mappedBy ="address" )
+    private User user;
+
 
 }

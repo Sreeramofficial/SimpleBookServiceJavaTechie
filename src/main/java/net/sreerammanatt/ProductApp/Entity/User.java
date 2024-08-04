@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "user_table")
@@ -14,7 +15,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Data
 @Builder
-public class User {
+public class User  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,8 +24,10 @@ public class User {
 
     @Column(name = "userName")
     private String name;
+
+
     @OneToOne(cascade = CascadeType.ALL,
-    fetch = FetchType.LAZY)
+    fetch = FetchType.EAGER)
     @JoinColumn(name = "address",nullable = false)
     private  Address address;
 }
