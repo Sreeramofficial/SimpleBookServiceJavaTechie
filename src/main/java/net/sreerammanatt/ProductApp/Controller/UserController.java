@@ -29,6 +29,8 @@ public class UserController {
         log.error(user.getAddress().getDistrict());
         userService.saveUser(user);
     }
+//    @GetMapping
+//    public void findUserEducation()
 
 
 
