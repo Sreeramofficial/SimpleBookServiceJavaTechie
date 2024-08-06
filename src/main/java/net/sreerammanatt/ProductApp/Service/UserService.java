@@ -37,8 +37,11 @@ public class UserService {
 
     //pagination method for user added
     public List<User> getUserWithSorting() {
-        Pageable pageable = PageRequest.of(1, 2, Sort.by("name"));
-        return userRepository.findAll(pageable).getContent();
+        Pageable pageable = PageRequest.of(1, 2, Sort.by("name").
+                ascending()
+                .and(Sort.by("id")
+                        .ascending()));
+        return userRepository.findAll(pageable). getContent();
     }
 
 }
