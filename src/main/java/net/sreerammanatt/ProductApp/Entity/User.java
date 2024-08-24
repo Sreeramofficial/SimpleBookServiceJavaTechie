@@ -8,6 +8,10 @@ import lombok.NoArgsConstructor;
 import org.hibernate.engine.internal.Cascade;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
@@ -25,7 +29,12 @@ public class User {
     private Long id;
 
     @Column(name = "userName")
+     @NotNull(message = "name should not be null")
     private String name;
+
+    @Column(name = "email")
+    @Email(message = "should be valid email")
+    private String email;
 
 
     @OneToOne(cascade = CascadeType.ALL,

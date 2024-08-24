@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 
 @RestController
 @RequestMapping("/user")
@@ -23,18 +25,12 @@ public class UserController {
     }
 
     @PostMapping("/saveUser")
-    public void saveUser(@RequestBody User user) {
 
-        try {
-            userService.saveUser(user);
+    public String saveUser(@RequestBody  @Valid User user) {
 
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        } finally {
-            System.out.println("error occurred please try again");
-        }
+
+        return userService.saveUser(user);
+
 
     }
-
-
 }

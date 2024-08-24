@@ -1,9 +1,10 @@
 package net.sreerammanatt.ProductApp.Service;
 
 
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import net.sreerammanatt.ProductApp.Entity.User;
+import net.sreerammanatt.ProductApp.Enums.Exceptions;
+import net.sreerammanatt.ProductApp.Exception.UserException;
 import net.sreerammanatt.ProductApp.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -21,10 +23,19 @@ public class UserService {
     UserRepository userRepository;
 
     public User getUserById(Long userId) {
-        return userRepository.findById(userId).get();
+
+        Optional<User> user = userRepository.findById(userId);
+        if (!user.isPresent()) {
+            throw new UserException(Exceptions.USER_NOT_FOUND);
+
+        }
+        return user.get();
     }
 
-    public void saveUser(User user) {
+    public String saveUser(User user) {
+        if (userRepository.existsByEmail(user.getEmail())) {
+            throw new UserException(Exceptions.DUPLICATE_MAIL);
+        }
 
         try {
             userRepository.save(user);
@@ -32,6 +43,8 @@ public class UserService {
             log.error("sorry error occurred!!");
 
         }
+        return user.getName() + " added!!!";
+
 
     }
 
@@ -41,7 +54,7 @@ public class UserService {
                 ascending()
                 .and(Sort.by("id")
                         .ascending()));
-        return userRepository.findAll(pageable). getContent();
+        return userRepository.findAll(pageable).getContent();
     }
 
 }
