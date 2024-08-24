@@ -1,4 +1,5 @@
 package net.sreerammanatt.ProductApp.Entity;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,15 +22,10 @@ public class Education {
 
     @Column(name = "course")
     private String course;
+
+
     @Column(name = "isCompleted")
     private Boolean isCompleted;
-
-//    @ManyToOne( cascade = CascadeType.ALL)
-////    @JoinColumn(name = "user_id",referencedColumnName = "user_id")
-//    private User user;
-
-
-
 
 
 }

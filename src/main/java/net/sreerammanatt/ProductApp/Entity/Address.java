@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 
 @Entity
@@ -23,10 +26,17 @@ public class Address {
 
 
     @Column(name = "HOMENAME")
+    @NotNull(message = "Home name should not be null")
     private String homeName;
+
+
+
 
     private @Column(name = "DISTRICT")
     String district;
+
+
+
     private @Column(name = "STATE")
     String state;
 

@@ -8,10 +8,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.engine.internal.Cascade;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -29,7 +27,8 @@ public class User {
     private Long id;
 
     @Column(name = "userName")
-     @NotNull(message = "name should not be null")
+    @NotNull(message = "name should not be null")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Name must contain only letters")
     private String name;
 
     @Column(name = "email")
@@ -40,6 +39,8 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL,
             fetch = FetchType.EAGER)
     @JoinColumn(name = "address_id", nullable = false, referencedColumnName = "address_id")
+    //for validating sub entities
+    @Valid
     private Address address;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.EAGER)
