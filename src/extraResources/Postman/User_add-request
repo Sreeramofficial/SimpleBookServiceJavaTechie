@@ -1,8 +1,9 @@
 {
-    "name": "sreeram",
+    "name":"awasa" ,
+    "email":"sswm@gmil.com",
     "address": {
-        "homeName": "no name",
-        "district": "malappuram",
+        "homeName": null,
+        "district": 12,
         "state": "kerala"
     },
     "education": [
