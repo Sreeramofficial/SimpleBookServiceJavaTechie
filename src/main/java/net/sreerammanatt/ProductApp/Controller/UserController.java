@@ -17,23 +17,24 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/getUserDetails/{userId}")
-    public User getUserDetails(@PathVariable  Long userId){
-        return  userService.getUserById(userId);
+    public User getUserDetails(@PathVariable Long userId) {
+        return userService.getUserById(userId);
 
     }
 
     @PostMapping("/saveUser")
-    public void saveUser(@RequestBody User  user){
+    public void saveUser(@RequestBody User user) {
 
-        log.error(user.getName());
-        log.error(user.getAddress().getDistrict());
-        userService.saveUser(user);
+        try {
+            userService.saveUser(user);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            System.out.println("error occurred please try again");
+        }
+
     }
-//    @GetMapping
-//    public void findUserEducation()
-
-
-
 
 
 }

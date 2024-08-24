@@ -24,9 +24,9 @@ public class Education {
     @Column(name = "isCompleted")
     private Boolean isCompleted;
 
-    @ManyToOne( cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id",referencedColumnName = "user_id")
-    private User user;
+//    @ManyToOne( cascade = CascadeType.ALL)
+////    @JoinColumn(name = "user_id",referencedColumnName = "user_id")
+//    private User user;
 
 
 

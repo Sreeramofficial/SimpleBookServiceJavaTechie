@@ -38,9 +38,4 @@ public class User {
     private List<Education> education;
 
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "user_purchases", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-            , inverseJoinColumns = @JoinColumn(name = "purchase_id", referencedColumnName = "purchase_id"))
-    private List<Purchases> purchases;
-
 }
