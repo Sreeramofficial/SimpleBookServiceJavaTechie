@@ -1,0 +1,1 @@
+alter table user_education modify is_completed Integer;
